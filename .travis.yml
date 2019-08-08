@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "10"
+dist: trusty
+sudo: requiredbranches:
+  only:
+  - masterbefore_script:
+  - npm install -g @angular/cliscript:
+  - ng lint
+  - npm run test-headless
+  - ng build --prod --build-optimizer --base-href https://cerealkiller97.github.io/NG-VideoGamer:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/travis-demo
+  on:
+    branch: master
