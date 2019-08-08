@@ -658,6 +658,13 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+angular-epic-spinners@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/angular-epic-spinners/-/angular-epic-spinners-2.0.0.tgz#2f7c340836e98b6dddadf754a7185c3172d7a03a"
+  integrity sha512-+OElE3Vb0A555DcRh44LpHuYxdoTKFsOkVCFubFBt4FexYLaPuyzY0qGL566C2Y/i0cFmcl+CNcKvX1SuVp0Ig==
+  dependencies:
+    tslib "^1.9.0"
+
 ansi-colors@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.0.tgz#e1674bd61027c8c219b9edec929b6b57641b0c09"
