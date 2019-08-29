@@ -17,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: null
+    component: DefaultComponent,
+    loadChildren: () => import('../../errors/errors.module').then(mod => mod.ErrorsModule)
   }
 ];
 

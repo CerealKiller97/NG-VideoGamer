@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { LoadingService } from 'src/app/modules/shared/loading.service';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+  public contactForm: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required])
+  });
 
-  constructor() { }
+  constructor(private readonly titleService: Title, private readonly loadingService: LoadingService) {}
 
   ngOnInit() {
+    this.titleService.setTitle('VideoGamer | Contact');
   }
-
 }
