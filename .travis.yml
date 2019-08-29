@@ -27,5 +27,13 @@ deploy:
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
     keep-history: true
+    target-branch: gh-pages
     local-dir: ./dist/
-    on:
+    verbose: true
+on:
+  branch: master
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
