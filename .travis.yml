@@ -21,19 +21,10 @@ script:
   - ng build --prod
 
 deploy:
-  - edge:
-      branch: v1.8.47
-    provider: pages
-    skip-cleanup: true
-    github-token: $GITHUB_TOKEN
-    keep-history: true
-    target-branch: gh-pages
-    local-dir: ./dist/
-    verbose: true
-on:
-  branch: master
-
-notifications:
-  email:
-    on_success: never
-    on_failure: always
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  local-dir: ./dist/
+  on:
+    branch: master
