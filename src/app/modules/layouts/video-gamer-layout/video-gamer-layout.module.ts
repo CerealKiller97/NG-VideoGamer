@@ -8,7 +8,16 @@ const routes: Routes = [
   {
     path: '',
     component: DefaultComponent,
-    children: []
+    loadChildren: () => import('../../home/home.module').then(mod => mod.HomeModule)
+  },
+  {
+    path: 'contact',
+    component: DefaultComponent,
+    loadChildren: () => import('../../contact/contact.module').then(mod => mod.ContactModule)
+  },
+  {
+    path: '**',
+    component: null
   }
 ];
 

@@ -1,1 +1,14 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+  <span>VideoGamer</span>
+
+  <span class="example-fill-remaining-space"></span>
+
+  <span>
+    <nav mat-tab-nav-bar>
+      <button mat-button *ngFor="let link of links" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
+        class="nav-link">
+        {{ link.name }}
+      </button>
+    </nav>
+  </span>
+</mat-toolbar>
