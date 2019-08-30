@@ -1,17 +1,32 @@
 language: node_js
 node_js:
-  - "11"
-dist: trusty
-sudo: requiredbranches:
+  - '11.0'
+
+branches:
   only:
-  - masterbefore_script:
-  - npm install -g @angular/cliscript:
+    - master
+
+addons:
+  chrome: stable
+
+before_script:
+  - yarn global add @angular/cli
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+script:
   - ng lint
-  - npm run test-headless
-  - ng build --prod --base-href https://cerealkiller97.github.io/NG-VideoGamer:
+  - ng test --watch=false
+  - ng build --prod
+
+deploy:
+  edge: true
   provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: dist/video-gamer
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  local-dir: ./dist/video-gamer
   on:
-    branch: master
