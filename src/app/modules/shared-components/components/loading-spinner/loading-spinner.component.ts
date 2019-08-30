@@ -6,7 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./loading-spinner.component.css']
 })
 export class LoadingSpinnerComponent implements OnInit {
-  @Input() loading: boolean = true;
+  @Input()
+  loading: boolean;
 
   constructor() {}
 
