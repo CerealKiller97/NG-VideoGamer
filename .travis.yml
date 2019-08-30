@@ -19,6 +19,7 @@ cache:
 
 script:
   - ng lint
+  - ng test --watch=false
   - ng build --prod
 
 deploy:
@@ -27,7 +28,7 @@ deploy:
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
-  local-dir: ./dist/
+  local-dir: ./dist/video-gamer
   on:
 
-after_success: cp .htaccess dist/
+after_success: cp .htaccess dist/video-gamer
