@@ -1,4 +1,6 @@
 export interface IEnvironment {
   production: boolean;
-  apiKey: string;
+  xRapidApiHost: string;
+  xRapidApiKey: string;
+  apiUrl: string;
 }

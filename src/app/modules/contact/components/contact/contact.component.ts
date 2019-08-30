@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { LoadingService } from 'src/app/modules/shared/loading.service';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoadingService } from '../../../shared/services/loading/loading.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',

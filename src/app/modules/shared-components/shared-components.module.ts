@@ -6,9 +6,10 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { FingerprintSpinnerModule } from 'angular-epic-spinners';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LoadingSpinnerComponent],
+  declarations: [HeaderComponent, FooterComponent, LoadingSpinnerComponent, NotificationComponent],
   imports: [CommonModule, FingerprintSpinnerModule, RouterModule, MaterialModule],
   exports: [HeaderComponent, FooterComponent, LoadingSpinnerComponent]
 })
