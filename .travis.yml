@@ -27,7 +27,7 @@ deploy:
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
-  local-dir: ./dist/video-gamer
+  local-dir: ./dist/
   on:
 
-after_success: cp .htaccess dist/video-gamer
+after_success: cp .htaccess dist/
