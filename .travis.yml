@@ -29,3 +29,5 @@ deploy:
   keep-history: true
   local-dir: ./dist/video-gamer
   on:
+
+after_success: cp .htaccess dist/video-gamer
