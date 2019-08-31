@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 export interface Link {
   name: string;
   path: string;
+  icon: string;
 }
 
 @Component({
@@ -12,9 +13,9 @@ export interface Link {
 })
 export class HeaderComponent implements OnInit {
   public readonly links: Link[] = [
-    { name: 'Home', path: '' },
-    { name: 'Gaming', path: 'gaming' },
-    { name: 'Contact', path: 'contact' }
+    { name: 'Home', path: '', icon: 'home' },
+    { name: 'Gaming', path: 'gaming', icon: 'games' },
+    { name: 'Contact', path: 'contact', icon: 'mail' }
   ];
   constructor() {}
 
