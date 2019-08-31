@@ -13,7 +13,7 @@ export interface Link {
 export class HeaderComponent implements OnInit {
   public readonly links: Link[] = [
     { name: 'Home', path: '' },
-    { name: 'About', path: 'about' },
+    { name: 'Gaming', path: 'gaming' },
     { name: 'Contact', path: 'contact' }
   ];
   constructor() {}

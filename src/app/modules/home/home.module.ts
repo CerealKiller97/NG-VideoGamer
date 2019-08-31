@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotificationComponent } from '../shared-components/components/notification/notification.component';
 import { SharedModule } from '../shared/shared.module';
-import { TeamsService } from '@serviceteams/teams.service';
+import { GamesService } from '@service/games/games.service';
 
 const routes: Routes = [
   {
@@ -39,6 +39,6 @@ const routes: Routes = [
     SharedModule
   ],
   entryComponents: [NotificationComponent],
-  providers: [TeamsService]
+  providers: [GamesService]
 })
 export class HomeModule {}

@@ -6,7 +6,7 @@ import { IEnvironment } from './environment.interface';
 
 export const environment: IEnvironment = {
   production: false,
-  apiUrl: 'https://free-nba.p.rapidapi.com',
+  apiUrl: 'https://api.rawg.io/api',
   xRapidApiKey: 'aolN7ZvMgZmsh4QEr4r3ghUrDjIyp12Y5zejsnbDZaxGht72JT',
   xRapidApiHost: 'free-nba.p.rapidapi.com'
 };

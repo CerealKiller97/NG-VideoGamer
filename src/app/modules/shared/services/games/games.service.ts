@@ -4,7 +4,6 @@ import { IApiResource } from '@service/IApiResource';
 import { Game } from '@model/Game';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
-import { apiHttpHeaders } from '@serviceApiHttpHeaders';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -16,14 +15,10 @@ export class GamesService implements IApiResource<Game> {
   constructor(private readonly http: HttpClient) {}
 
   public all(): Observable<Game[]> {
-    return this.http.get<{ data: Game[] }>(this.resourcePath, apiHttpHeaders).pipe(
-      map(response => {
-        return response.data;
-      })
-    );
+    return this.http.get<{ results: Game[] }>(this.resourcePath).pipe(map(response => response.results));
   }
 
-  public find(id: number): Observable<Game> {
-    return this.http.get<Game>(`${this.resourcePath}/${id}`, apiHttpHeaders);
+  public find(gameSlug: string): Observable<Game> {
+    return this.http.get<Game>(`${this.resourcePath}/${gameSlug}`);
   }
 }
