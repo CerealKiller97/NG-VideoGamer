@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PlayersService } from './players.service';
+import { CustomIconsService } from './custom-icons.service';
 
-describe('PlayersService', () => {
+describe('CustomIconsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: PlayersService = TestBed.get(PlayersService);
+    const service: CustomIconsService = TestBed.get(CustomIconsService);
     expect(service).toBeTruthy();
   });
 });

@@ -9,6 +9,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotificationComponent } from '../shared-components/components/notification/notification.component';
 import { SharedModule } from '../shared/shared.module';
 import { GamesService } from '@service/games/games.service';
+import { CustomIconService } from '@serviceicons/custom-icons.service';
 
 const routes: Routes = [
   {
@@ -39,6 +40,6 @@ const routes: Routes = [
     SharedModule
   ],
   entryComponents: [NotificationComponent],
-  providers: [GamesService]
+  providers: [GamesService, CustomIconService]
 })
 export class HomeModule {}
