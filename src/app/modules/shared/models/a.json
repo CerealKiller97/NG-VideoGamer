@@ -1,0 +1,29 @@
+{
+  "id": 3,
+  "date": "2018-10-17 00:00:00 UTC",
+  "home_team": {
+    "id": 4,
+    "abbreviation": "CHA",
+    "city": "Charlotte",
+    "conference": "East",
+    "division": "Southeast",
+    "full_name": "Charlotte Hornets",
+    "name": "Hornets"
+  },
+  "home_team_score": 112,
+  "period": 4,
+  "postseason": false,
+  "season": 2018,
+  "status": "Final",
+  "time": " ",
+  "visitor_team": {
+    "id": 17,
+    "abbreviation": "MIL",
+    "city": "Milwaukee",
+    "conference": "East",
+    "division": "Central",
+    "full_name": "Milwaukee Bucks",
+    "name": "Bucks"
+  },
+  "visitor_team_score": 113
+}

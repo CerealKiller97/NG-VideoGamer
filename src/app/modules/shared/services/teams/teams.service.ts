@@ -9,20 +9,16 @@ import { apiHttpHeaders } from '@service/ApiHttpHeaders';
 @Injectable({
   providedIn: 'root'
 })
-export class TeamsService implements  IApiResource<Team> {
+export class TeamsService {
   public readonly resourcePath: string = `${environment.apiUrl}/teams`;
 
   constructor(private readonly http: HttpClient) {}
 
   public all(): Observable<Team[]> {
-    return this.http.get<{ data: Team[] }>(this.resourcePath, apiHttpHeaders).pipe(
-        map(response => {
-          return response.data;
-        })
-      );
-    }
+    return this.http.get<{ data: Team[] }>(this.resourcePath, apiHttpHeaders).pipe(map(response => response.data));
+  }
 
-    public find(id: number): Observable<Team> {
-      return this.http.get<Team>(`${this.resourcePath}/${id}`, apiHttpHeaders);
-    }
+  public find(id: string): Observable<Team> {
+    return this.http.get<Team>(`${this.resourcePath}/${id}`, apiHttpHeaders);
+  }
 }
