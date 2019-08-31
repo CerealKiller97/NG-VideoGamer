@@ -7,10 +7,12 @@ import { FingerprintSpinnerModule } from 'angular-epic-spinners';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { NotificationComponent } from './components/notification/notification.component';
-
+import { CustomIconService } from '@serviceicons/custom-icons.service';
+import { HeroComponent } from './components/hero/hero.component';
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LoadingSpinnerComponent, NotificationComponent],
+  declarations: [HeaderComponent, FooterComponent, LoadingSpinnerComponent, NotificationComponent, HeroComponent],
   imports: [CommonModule, FingerprintSpinnerModule, RouterModule, MaterialModule],
-  exports: [HeaderComponent, FooterComponent, LoadingSpinnerComponent]
+  exports: [HeaderComponent, FooterComponent, LoadingSpinnerComponent],
+  providers: [CustomIconService]
 })
 export class SharedComponentsModule {}

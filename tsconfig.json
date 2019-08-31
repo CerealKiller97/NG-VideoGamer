@@ -19,6 +19,7 @@
       "dom"
     ],
     "paths": {
+      "@assets*": ["assets/*"],
       "@service*": ["app/modules/shared/services/*"],
       "@model*": ["app/modules/shared/models/*"],
       "@pipe*": ["app/modules/pipes/*"],

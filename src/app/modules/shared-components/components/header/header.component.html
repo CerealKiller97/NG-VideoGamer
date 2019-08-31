@@ -7,23 +7,69 @@
 
   <span>
     <nav mat-tab-nav-bar>
-      <button mat-button *ngFor="let link of links" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
-        class="nav-link light-text">
-        <mat-icon>{{ link.icon }}</mat-icon>
-        <span class="spacy">{{ link.name }}</span>
-      </button>
+      <ng-container *ngFor="let link of links">
+        <button mat-button [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" class="nav-link
+          light-text" *ngIf="link.name != 'Gaming'; else gamingMenu">
+          <mat-icon>{{ link.icon }}</mat-icon>
+          <span class="spacy">{{ link.name }}</span>
+        </button>
+
+        <ng-template #gamingMenu>
+          <button mat-button [matMenuTriggerFor]="gaming">
+            <mat-icon>games</mat-icon>
+            <span class="spacy">Gaming</span>
+          </button>
+
+          <mat-menu #gaming="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="platformsmenu">Platforms</button>
+            <button mat-menu-item [matMenuTriggerFor]="genresmenu">Genres</button>
+          </mat-menu>
+
+          <mat-menu #platformsmenu="matMenu">
+            <button mat-menu-item *ngFor="let platform of platforms" [routerLink]="['/gaming/platform', platform.slug]">
+              <mat-icon [svgIcon]="platform.icon"></mat-icon>
+              {{ platform.name }}
+            </button>
+          </mat-menu>
+
+          <mat-menu #genresmenu="matMenu">
+            <button mat-menu-item *ngFor="let genre of genres" [routerLink]="['/gaming/genres', genre.slug]"
+              routerLinkActive>
+              {{ genre.name }}
+            </button>
+          </mat-menu>
+        </ng-template>
+
+        <!-- <ng-template #standard>
+          <button mat-button [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" class="nav-link
+            light-text">
+            <mat-icon>{{ link.icon }}</mat-icon>
+            <span class="spacy">{{ link.name }}</span>
+        </ng-template> -->
+      </ng-container>
 
       <button class="light-text" mat-button [matMenuTriggerFor]="menu">
         <mat-icon>apps</mat-icon>
         <span class="spacy">About project</span>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Follow me on Github</button>
-        <button mat-icon-button>
+        <a mat-menu-item href="https://github.com/CerealKiller97" target="_blank">
+          <mat-icon>thumb_up</mat-icon>
+          Follow me on Github
+        </a>
+        <a mat-menu-item href="https://github.com/CerealKiller97/NG-VideoGamer" target="_blank">
           <mat-icon>star</mat-icon>
           <span>Star it on Github</span>
-        </button>
+        </a>
       </mat-menu>
+
+      <!-- TODO: Toggle dark mode -->
+      <!-- <div>
+        <mat-slide-toggle color="warn"></mat-slide-toggle>
+      </div>
+
+      <small class="light-text spacy">Dark Theme</small> -->
+
     </nav>
   </span>
 </mat-toolbar>

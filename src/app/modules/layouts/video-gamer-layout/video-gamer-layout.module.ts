@@ -11,6 +11,11 @@ const routes: Routes = [
     loadChildren: () => import('../../home/home.module').then(mod => mod.HomeModule)
   },
   {
+    path: 'gaming',
+    component: DefaultComponent,
+    loadChildren: () => import('../../gaming/gaming.module').then(mod => mod.GamingModule)
+  },
+  {
     path: 'contact',
     component: DefaultComponent,
     loadChildren: () => import('../../contact/contact.module').then(mod => mod.ContactModule)
