@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomIconService } from '@service/icons/custom-icons.service';
+import { MatDialog } from '@angular/material/dialog';
+import { BugReportDialogComponent, BugReport } from '../bug-report-dialog/bug-report-dialog.component';
 export interface Link {
   name: string;
   path: string;
@@ -24,6 +26,8 @@ export interface Platform {
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public bugReport: BugReport;
+
   public readonly links: Link[] = [
     { name: 'Home', path: '', icon: 'home' },
     { name: 'Gaming', path: 'gaming', icon: 'games' },
@@ -50,10 +54,23 @@ export class HeaderComponent implements OnInit {
     { name: 'Android', icon: 'android', slug: 'android' }
   ];
 
-  constructor(private readonly customIconsService: CustomIconService) {}
+  constructor(private readonly customIconsService: CustomIconService, private readonly dialogService: MatDialog) {}
 
   ngOnInit(): void {
     this.customIconsService.registerPlatformIcons();
+    // this.dialogService.open();
+  }
+
+  public openReportBugDialog(): void {
+    const dialogRef = this.dialogService.open(BugReportDialogComponent, {
+      width: '500px',
+      data: { bug: this.bugReport }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log('The dialog was closed');
+      this.bugReport = result;
+    });
   }
 
   trackByFunc(index: number, item: Link): string {

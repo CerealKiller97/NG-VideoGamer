@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     this.loadingService.setLoading(true);
     this.titleService.setTitle('VideoGamer | Home');
     this.openSnackBar();
-    this.subscription = this.gamesService.all().subscribe(data => {
+    this.subscription = this.gamesService.getGames().subscribe(data => {
       console.log(data);
     });
   }

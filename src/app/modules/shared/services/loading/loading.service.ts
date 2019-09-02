@@ -4,7 +4,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class LoadingService {
-  private readonly loadingStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private loadingStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private subscription: Subscription;
 
   constructor() {}

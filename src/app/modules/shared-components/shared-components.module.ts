@@ -9,10 +9,21 @@ import { MaterialModule } from './material/material.module';
 import { NotificationComponent } from './components/notification/notification.component';
 import { CustomIconService } from '@serviceicons/custom-icons.service';
 import { HeroComponent } from './components/hero/hero.component';
+import { BugReportDialogComponent } from './components/bug-report-dialog/bug-report-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LoadingSpinnerComponent, NotificationComponent, HeroComponent],
-  imports: [CommonModule, FingerprintSpinnerModule, RouterModule, MaterialModule],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    LoadingSpinnerComponent,
+    NotificationComponent,
+    HeroComponent,
+    BugReportDialogComponent
+  ],
+  imports: [CommonModule, FingerprintSpinnerModule, RouterModule, MaterialModule, FormsModule, MatInputModule],
   exports: [HeaderComponent, FooterComponent, LoadingSpinnerComponent],
-  providers: [CustomIconService]
+  providers: [CustomIconService],
+  entryComponents: [BugReportDialogComponent]
 })
 export class SharedComponentsModule {}
