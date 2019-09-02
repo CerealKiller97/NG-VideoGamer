@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CustomIconService } from '@service/icons/custom-icons.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BugReportDialogComponent, BugReport } from '../bug-report-dialog/bug-report-dialog.component';
+import { GenreService } from '@service/genres/genres.service';
+import { Subscription } from 'rxjs';
+import { PlatformsService } from '@service/platforms/platforms.service';
 export interface Link {
   name: string;
   path: string;
@@ -25,7 +28,7 @@ export interface Platform {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   public bugReport: BugReport;
 
   public readonly links: Link[] = [
@@ -34,30 +37,30 @@ export class HeaderComponent implements OnInit {
     { name: 'Contact', path: 'contact', icon: 'mail' }
   ];
 
-  public readonly genres: Genre[] = [
-    { name: 'Action', icon: '../../../../../assets/images/genres/action.png', slug: 'action' },
-    { name: 'Strategy', icon: '', slug: 'strategy' },
-    { name: 'RPG', icon: '', slug: 'role-playing-games-rpg' },
-    { name: 'Shooter', icon: '', slug: 'shooter' },
-    { name: 'Adventure', icon: '', slug: 'adventure' },
-    { name: 'Puzzle', icon: '', slug: 'puzzle' },
-    { name: 'Racing', icon: '', slug: 'racing' },
-    { name: 'Sports', icon: '', slug: 'sports' }
-  ];
+  private subscriptions: Subscription[] = [];
 
-  public readonly platforms: Platform[] = [
-    { name: 'PC', icon: 'windows', slug: 'pc' },
-    { name: 'PlayStation 4', icon: 'ps4', slug: 'playstation4' },
-    { name: 'Xbox One', icon: 'xbox', slug: 'xbox-one' },
-    { name: 'Nintendo Switch', icon: 'nintendo', slug: 'nintendo-switch' },
-    { name: 'iOS', icon: 'ios', slug: 'ios' },
-    { name: 'Android', icon: 'android', slug: 'android' }
-  ];
+  public genresMap: Map<string, { id: number; slug: string }>;
+  public genres: Array<any> = [];
 
-  constructor(private readonly customIconsService: CustomIconService, private readonly dialogService: MatDialog) {}
+  public platforms: Platform[];
+
+  constructor(
+    private readonly customIconsService: CustomIconService,
+    private readonly dialogService: MatDialog,
+    private readonly genreService: GenreService,
+    private readonly platformService: PlatformsService
+  ) {}
 
   ngOnInit(): void {
     this.customIconsService.registerPlatformIcons();
+    this.subscriptions.push(
+      this.genreService.getGenres().subscribe(([genreMap, genreArray]) => {
+        this.genresMap = genreMap as Map<string, { id: number; slug: string }>;
+        this.genres = genreArray as Array<any>;
+      })
+    );
+
+    this.platforms = this.platformService.getPlatforms();
     // this.dialogService.open();
   }
 
@@ -73,7 +76,13 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  trackByFunc(index: number, item: Link): string {
+  public trackByFunc(index: number, item: Link): string {
     return item.path;
+  }
+
+  public ngOnDestroy(): void {
+    for (let sub of this.subscriptions) {
+      sub.unsubscribe();
+    }
   }
 }

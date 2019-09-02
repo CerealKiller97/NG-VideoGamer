@@ -1,5 +1,5 @@
 <mat-grid-list cols="1" rowHeight="2:1">
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmitContactForm();">
+  <form [formGroup]="contactForm">
     <mat-form-field>
       <input matInput formControlName="name" placeholder="Enter your first name..." />
     </mat-form-field>
@@ -15,6 +15,6 @@
     <mat-form-field>
       <textarea matInput formControlName="body" placeholder="Message body..."></textarea>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <button mat-raised-button color="primary" type="button" (click)="onSubmitContactForm();">Submit</button>
   </form>
 </mat-grid-list>
