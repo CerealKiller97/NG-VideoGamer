@@ -9,7 +9,7 @@
     <nav mat-tab-nav-bar>
       <ng-container *ngFor="let link of links">
         <button mat-button [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" class="nav-link
-          light-text" *ngIf="link.name != 'Gaming'; else gamingMenu">
+            light-text" *ngIf="link.name != 'Gaming'; else gamingMenu">
           <mat-icon>{{ link.icon }}</mat-icon>
           <span class="spacy">{{ link.name }}</span>
         </button>
@@ -62,10 +62,10 @@
 
       <!-- TODO: Toggle dark mode -->
       <!-- <div>
-        <mat-slide-toggle color="warn"></mat-slide-toggle>
-      </div>
+          <mat-slide-toggle color="warn"></mat-slide-toggle>
+        </div>
 
-      <small class="light-text spacy">Dark Theme</small> -->
+        <small class="light-text spacy">Dark Theme</small> -->
     </nav>
   </span>
 </mat-toolbar>

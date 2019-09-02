@@ -9,7 +9,18 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GamesService {
-  private readonly resourcePath: string = `${environment.apiUrl}/games`;
+  private resourcePath: string = `${environment.apiUrl}/games`;
+
+  private readonly genreMappings = new Map<string, number>([
+    ['action', 4],
+    ['strategy', 10],
+    ['role-playing-games-rpg', 5],
+    ['shooter', 2],
+    ['adventure', 3],
+    ['puzzle', 7],
+    ['racing', 1],
+    ['sports', 15]
+  ]);
 
   constructor(private readonly http: HttpClient) {}
 
@@ -25,7 +36,16 @@ export class GamesService {
     return this.http.get<Game>(`${this.resourcePath}/${gameSlug}`);
   }
 
-  public getGamesByPlatform(platform: string) {}
+  public getGamesByPlatform(platform: string) {
+    this.resourcePath += '?';
+    return this.http.get<{ results: Game[] }>(this.resourcePath).pipe(map(response => response.results));
+  }
 
-  public getGamesByGenre(genre: string) {}
+  public getGamesByGenre(genre: string) {
+    const genreId: number = this.genreMappings.get(genre);
+
+    return this.http
+      .get<{ results: Game[] }>(`${this.resourcePath}?genres=${genreId}`)
+      .pipe(map(response => response.results));
+  }
 }

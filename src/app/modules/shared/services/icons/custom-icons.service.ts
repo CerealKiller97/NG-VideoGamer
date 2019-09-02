@@ -21,11 +21,11 @@ export class CustomIconService {
   constructor(private readonly matIconRegistry: MatIconRegistry, private readonly domSanitizer: DomSanitizer) {}
 
   public registerPlatformIcons(): void {
-    this.platformIcons.forEach((platformIcons: CustomIcon) => {
+    for (let i = 0; i < this.platformIcons.length; i++) {
       this.matIconRegistry.addSvgIcon(
-        platformIcons.name,
-        this.domSanitizer.bypassSecurityTrustResourceUrl(platformIcons.path)
+        this.platformIcons[i].name,
+        this.domSanitizer.bypassSecurityTrustResourceUrl(this.platformIcons[i].path)
       );
-    });
+    }
   }
 }

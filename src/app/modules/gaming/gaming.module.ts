@@ -6,8 +6,11 @@ import { GameListComponent } from './components/game-list/game-list.component';
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
+    path: 'platform/:platform',
+    component: GameListComponent
+  },
+  {
+    path: 'genres/:genre',
     component: GameListComponent
   }
 ];

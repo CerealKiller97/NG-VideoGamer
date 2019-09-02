@@ -35,7 +35,7 @@ export class ContactComponent implements OnInit {
       panelClass: ['success']
     };
 
-    this.snackBar.open('You have successfully contacted VideoGamer.', '', options);
+    this.snackBar.open('You have successfully contacted VideoGamer.', null, options);
   }
 
   public openErrorSnackBar(): void {

@@ -1,17 +1,21 @@
 <h1 mat-dialog-title class="text-center">Bug Report</h1>
 <div mat-dialog-content class="text-center">
-  <form class="example-form">
+  <form class="example-form" [formGroup]="bugReportForm">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Favorite food" [(ngModel)]="data.fullName">
+      <input matInput placeholder="Enter your full name..." formControlName="fullName" />
+      <span *ngIf="!bugReportForm.get('fullName').valid && bugReportForm.get('fullName').touched">Full name is
+        required.</span>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Report a bug..." [(ngModel)]="data.bug"></textarea>
+      <textarea matInput placeholder="Report a bug..." formControlName="bug"></textarea>
+      <span *ngIf="!bugReportForm.get('bug').valid && bugReportForm.get('bug').touched">Bug field is required.</span>
     </mat-form-field>
   </form>
 
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="primary" [mat-dialog-close]="data.fullName" cdkFocusInitial>Submit bug</button>
+  <button mat-raised-button color="primary" (click)="submitReport();" cdkFocusInitial>Submit bug</button>
+  <!-- [mat-dialog-close]="data.fullName" -->
   <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
 </div>
