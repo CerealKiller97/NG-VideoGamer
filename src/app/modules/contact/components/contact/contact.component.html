@@ -1,1 +1,20 @@
-<h1>Contact page</h1>
+<mat-grid-list cols="1" rowHeight="2:1">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmitContactForm();">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Enter your first name..." />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="Enter your email..." />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="subject" placeholder="Enter your subject..." />
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput formControlName="body" placeholder="Message body..."></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</mat-grid-list>

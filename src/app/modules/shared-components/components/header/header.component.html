@@ -39,13 +39,6 @@
             </button>
           </mat-menu>
         </ng-template>
-
-        <!-- <ng-template #standard>
-          <button mat-button [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" class="nav-link
-            light-text">
-            <mat-icon>{{ link.icon }}</mat-icon>
-            <span class="spacy">{{ link.name }}</span>
-        </ng-template> -->
       </ng-container>
 
       <button class="light-text" mat-button [matMenuTriggerFor]="menu">
@@ -61,6 +54,10 @@
           <mat-icon>star</mat-icon>
           <span>Star it on Github</span>
         </a>
+        <button mat-menu-item href="https://github.com/CerealKiller97/NG-VideoGamer" (click)="openReportBugDialog();">
+          <mat-icon>bug_report</mat-icon>
+          <span>Report a bug</span>
+        </button>
       </mat-menu>
 
       <!-- TODO: Toggle dark mode -->
@@ -69,7 +66,6 @@
       </div>
 
       <small class="light-text spacy">Dark Theme</small> -->
-
     </nav>
   </span>
 </mat-toolbar>

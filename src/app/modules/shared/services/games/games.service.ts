@@ -9,15 +9,23 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GamesService {
-  public readonly resourcePath: string = `${environment.apiUrl}/games`;
+  private readonly resourcePath: string = `${environment.apiUrl}/games`;
 
   constructor(private readonly http: HttpClient) {}
 
-  public all(): Observable<Game[]> {
+  public getRandomGames(): Observable<Game[]> {
+    return null;
+  }
+
+  public getGames(): Observable<Game[]> {
     return this.http.get<{ results: Game[] }>(this.resourcePath).pipe(map(response => response.results));
   }
 
-  public find(gameSlug: string): Observable<Game> {
+  public getGame(gameSlug: string): Observable<Game> {
     return this.http.get<Game>(`${this.resourcePath}/${gameSlug}`);
   }
+
+  public getGamesByPlatform(platform: string) {}
+
+  public getGamesByGenre(genre: string) {}
 }
