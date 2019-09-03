@@ -13,5 +13,7 @@ export interface Game {
   platforms: Platform[];
   playtime: number;
   slug: string;
-  realeseData: string;
+  realesed: string;
+  clip: any;
+  parent_platforms: any;
 }

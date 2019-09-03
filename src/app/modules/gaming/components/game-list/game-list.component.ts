@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { GamesService } from '@service/games/games.service.ts';
 import { switchMap } from 'rxjs/operators';
+import { Game } from '@modelGame';
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
@@ -10,7 +11,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class GameListComponent implements OnInit, OnDestroy {
   private subscriptions: Array<Subscription> = new Array<Subscription>();
-
+  public games: Game[];
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
@@ -33,7 +34,7 @@ export class GameListComponent implements OnInit, OnDestroy {
             }
           })
         )
-        .subscribe(data => console.log(data))
+        .subscribe((data: Game[]) => console.log(data))
     );
   }
 

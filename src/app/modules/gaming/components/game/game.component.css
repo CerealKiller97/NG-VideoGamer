@@ -1,0 +1,14 @@
+.img {
+  width: 540px;
+  height: 338px;
+}
+
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.border-bottom {
+  border-bottom: 1px solid gold;
+}
