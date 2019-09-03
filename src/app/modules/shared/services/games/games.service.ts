@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Game } from '@model/Game';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
@@ -9,7 +9,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GamesService {
-  private resourcePath: string = `${environment.apiUrl}/games`;
+  private resourcePath = `${environment.apiUrl}/games`;
+  private readonly perPage = '?page_size=';
+  private readonly page = '?page=';
 
   private readonly genreMappings = new Map<string, number>([
     ['action', 4],
@@ -25,11 +27,11 @@ export class GamesService {
   constructor(private readonly http: HttpClient) {}
 
   public getRandomGames(): Observable<Game[]> {
-    return null;
-  }
+    const randomPage: string = Math.floor(Math.random() * 5 + 1).toString();
 
-  public getGames(): Observable<Game[]> {
-    return this.http.get<{ results: Game[] }>(this.resourcePath).pipe(map(response => response.results));
+    return this.http
+      .get<{ results: Game[] }>(`${this.resourcePath}?page=${randomPage}&page_size=6`)
+      .pipe(map(response => response.results));
   }
 
   public getGame(gameSlug: string): Observable<Game> {
