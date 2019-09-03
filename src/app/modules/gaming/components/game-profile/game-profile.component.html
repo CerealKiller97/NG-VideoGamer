@@ -1,1 +1,11 @@
-<p>game-profile works!</p>
+<div class="container">
+  <h1 class="light-text text-center">
+    {{ game?.name }}
+  </h1>
+  <div class="row">
+    <mat-chip color="primary">{{ game?.realesed }}</mat-chip>
+    <!-- <mat-icon *ngFor="let platform of game.parent_platforms">
+      {{ platform?.platform.slug }}
+    </mat-icon> -->
+  </div>
+</div>

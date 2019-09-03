@@ -12,6 +12,7 @@ export class CustomIconService {
   private readonly platformIcons: CustomIcon[] = [
     { name: 'windows', path: '../../../../../assets/images/platforms/windows.svg' },
     { name: 'ps4', path: '../../../../../assets/images/platforms/playstation4.svg' },
+    { name: 'ps3', path: '../../../../../assets/images/platforms/playstation3.svg' },
     { name: 'xbox', path: '../../../../../assets/images/platforms/xbox.svg' },
     { name: 'nintendo', path: '../../../../../assets/images/platforms/nintendoswitch.svg' },
     { name: 'ios', path: '../../../../../assets/images/platforms/apple.svg' },

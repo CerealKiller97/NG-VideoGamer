@@ -1,27 +1,59 @@
-<mat-card class="example-card">
-  <ng-template #name>
+  <mat-card class="my-5">
+    <img mat-card-image class="img" [src]="game.background_image" [alt]="game.name"
+      (mouseover)="imageToVideoReplace(game);" />
+    <!-- <video *ngIf="hovered" autoplay [src]="game.clip.clip"></video> -->
 
-  </ng-template>
+    <mat-card-header class="text-center">
+      <mat-card-title>{{ game.name | uppercase }}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
 
-  <img mat-card-image [src]="game.background_image" [alt]="game.name" (hover)="imageToVideoReplace(game);" />
+    <div class="container-fluid text-center border-bottom">
+      <div class="row">
+        <span>
+          <mat-icon *ngFor="let icon of platforms" [svgIcon]="icon" class="mx-2 my-2"></mat-icon>
+        </span>
+        <span class="example-fill-remaining-space"></span>
+        <span>
+          <mat-chip color="{{ genereateColorForMetrics(game) }}" selected class="px-2 py-2">
+            {{ game.metacritic === null ? 'No score' : game.metacritic }}
+          </mat-chip>
+        </span>
+      </div>
+    </div>
 
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{ game.name | uppercase }}</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button [routerLink]="['/gaming/game', game.slug]" color="primary">Read More</button>
-    <button mat-raised-button (click)="addToWishList();">
-      <span>Add to WishList</span>
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
-  </mat-card-actions>
-</mat-card>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+          <span>Genres:</span>
+          <span class="example-fill-remaining-space"></span>
+          <span>{{ mapGenres(game) }}</span>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <span>Chart: </span>
+          <span class="example-fill-remaining-space"></span>
+          <span><strong>#{{ game?.charts.year.position }}</strong> Top {{ game?.charts?.year?.year }}</span>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <span>Playtime: </span>
+          <span class="example-fill-remaining-space"></span>
+          <span>{{ game.playtime }} hours</span>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <span>Realese date: </span>
+          <span class="example-fill-remaining-space"></span>
+          <span>{{ game.released }}</span>
+        </mat-list-item>
+      </mat-list>
+
+    </mat-card-content>
+    <mat-card-actions class="text-center my-2">
+      <button mat-raised-button [routerLink]="['/gaming/game', game.slug]" color="primary">Read More</button>
+      <span class="example-fill-remaining-space"></span>
+
+      <button mat-raised-button (click)="addToWishList(game.name);">
+        <span>Add to WishList</span>
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
