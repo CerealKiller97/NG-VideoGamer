@@ -6,4 +6,5 @@ export interface Platform {
   slug: string;
   yearEnd: any;
   yearStart: any;
+  platform: any;
 }
