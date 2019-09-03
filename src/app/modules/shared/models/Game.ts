@@ -12,6 +12,7 @@ export interface Game {
   screenshots: Screenshoot[];
   platforms: Platform[];
   playtime: number;
+  platform: any;
   slug: string;
   realesed: string;
   clip: any;
