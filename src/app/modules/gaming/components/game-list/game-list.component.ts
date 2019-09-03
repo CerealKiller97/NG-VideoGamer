@@ -38,9 +38,8 @@ export class GameListComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    // Performance reason
-    for (let i = 0; i < this.subscriptions.length; i++) {
-      this.subscriptions[i].unsubscribe();
+    for (const sub of this.subscriptions) {
+      sub.unsubscribe();
     }
   }
 }

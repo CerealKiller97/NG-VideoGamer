@@ -20,7 +20,7 @@ export class GenreService {
         const genresArray = new Array(6);
         let counter = 0;
 
-        for (let result of results) {
+        for (const result of results) {
           if (counter > 5) {
             break;
           }

@@ -61,7 +61,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
 
     this.platforms = this.platformService.getPlatforms();
-    // this.dialogService.open();
   }
 
   public openReportBugDialog(): void {
@@ -70,10 +69,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       data: { bug: this.bugReport }
     });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log('The dialog was closed');
-      this.bugReport = result;
-    });
+    this.subscriptions.push(
+      dialogRef.afterClosed().subscribe((result: any) => {
+        console.log('The dialog was closed');
+        this.bugReport = result;
+      })
+    );
   }
 
   public trackByFunc(index: number, item: Link): string {
@@ -81,7 +82,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    for (let sub of this.subscriptions) {
+    for (const sub of this.subscriptions) {
       sub.unsubscribe();
     }
   }

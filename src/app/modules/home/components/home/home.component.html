@@ -1,17 +1,16 @@
-<mat-grid-list cols="1" rowHeight="2:1">
-  <mat-grid-tile>
-    <h1 class="light-text">Welcome to VideoGamer</h1>
-    <br />
-    <h5>Discover your new favorite game.</h5>
-    <mat-form-field>
-      <input matInput placeholder="label" value="value">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Cars</mat-label>
-      <select matNativeControl required>
-        <option value="volvo">Volvo</option>
-      </select>
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="onClick();">Explore</button>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-6">
+      <h1 class="light-text">Welcome to VideoGamer</h1>
+      <h5 class="ligt-text">Discover your new favorite game.</h5>
+      <button mat-raised-button color="primary" (click)="onClick();">Explore</button>
+    </div>
+  </div>
+  <div class="row">
+    <h1 class="light-text text-center">Most popular games</h1>
+    <div class="col col-lg-4 col-sm-6">
+      <app-game *ngFor="let game of games" [game]="game">
+      </app-game>
+    </div>
+  </div>
+</div>
