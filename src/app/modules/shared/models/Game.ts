@@ -17,4 +17,5 @@ export interface Game {
   realesed: string;
   clip: any;
   parent_platforms: any;
+  charts: any;
 }
