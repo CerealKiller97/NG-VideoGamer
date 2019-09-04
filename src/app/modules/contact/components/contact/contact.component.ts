@@ -24,6 +24,8 @@ export class ContactComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
+    this.loadingService.setLoading(true);
+    setTimeout(() => this.loadingService.setLoading(false), 1000);
     this.titleService.setTitle('VideoGamer | Contact');
   }
 
