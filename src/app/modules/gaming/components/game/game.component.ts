@@ -3,7 +3,6 @@ import { Game } from '@model/Game';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { LoadingSpinnerComponent } from '@shared-components/components/loading-spinner/loading-spinner.component';
 import { CustomIconService } from '@service/icons/custom-icons.service';
-import { Genre } from '@shared-components/components/header/header.component';
 
 @Component({
   selector: 'app-game',
@@ -15,7 +14,7 @@ export class GameComponent implements OnInit {
   @Input()
   public game: Game;
 
-  public hovered: boolean = false;
+  public hovered: boolean;
   public platforms: string[] = [];
 
   constructor(private readonly matSnack: MatSnackBar, private readonly customIconsService: CustomIconService) {}
@@ -48,15 +47,23 @@ export class GameComponent implements OnInit {
 
   public genereateColorForMetrics(game: Game): string {
     if (game.metacritic !== null) {
-      if (game.metacritic >= 90) return 'warn';
-      if (game.metacritic < 90) return 'primary';
-      if (game.metacritic < 80) return 'accent';
+      if (game.metacritic >= 90) {
+        return 'warn';
+      }
+
+      if (game.metacritic < 90) {
+        return 'primary';
+      }
+
+      if (game.metacritic < 80) {
+        return 'accent';
+      }
     }
 
     return null;
   }
 
-  public mapPlatforms(game: Game) {
+  public mapPlatforms(game: Game): void {
     for (const x of game.platforms) {
       switch (x.platform.slug) {
         case 'linux':
@@ -70,7 +77,9 @@ export class GameComponent implements OnInit {
         case 'xbox-old':
           this.platforms = [...this.platforms, 'xbox'];
           break;
-
+        case 'nintendo-switch':
+          this.platforms = [...this.platforms, 'nintendo'];
+          break;
         case 'xbox360':
           this.platforms = [...this.platforms, 'xbox'];
           break;
