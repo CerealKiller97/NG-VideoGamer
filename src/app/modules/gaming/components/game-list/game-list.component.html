@@ -1,5 +1,15 @@
 <div class="container">
-  <mat-toolbar>
-    <h1 class="light-text text-center">Gaming - Platform [PC]</h1>
+  <mat-toolbar class="my-4">
+    <h1 class="light-text text-center">Gaming - {{ category }} <strong>[{{ value | uppercase }}]</strong></h1>
   </mat-toolbar>
+
+  <div class="d-flex justify-content-around">
+    <div class="row">
+      <div class="col col-lg-6" *ngFor="let game of games">
+        <app-game [game]="game">
+        </app-game>
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -9,25 +9,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GamesService {
-  private resourcePath = `${environment.apiUrl}/games`;
-  private readonly perPage = '?page_size=';
-  private readonly page = '?page=';
-
-  private readonly genreMappings = new Map<string, number>([
-    ['action', 4],
-    ['strategy', 10],
-    ['role-playing-games-rpg', 5],
-    ['shooter', 2],
-    ['adventure', 3],
-    ['puzzle', 7],
-    ['racing', 1],
-    ['sports', 15]
-  ]);
+  private readonly resourcePath: string = `${environment.apiUrl}/games`;
+  private readonly perPage: string = '?page_size=';
+  private readonly page: string = '?page=';
 
   constructor(private readonly http: HttpClient) {}
 
   public getRandomGames(): Observable<Game[]> {
-    const randomPage: string = Math.floor(Math.random() * 5 + 1).toString();
+    const randomPage: number = Math.floor(Math.random() * 5 + 1);
 
     return this.http
       .get<{ results: Game[] }>(`${this.resourcePath}?page=${randomPage}&page_size=6`)
@@ -39,15 +28,7 @@ export class GamesService {
   }
 
   public getGamesByPlatform(platform: string) {
-    this.resourcePath += '?';
+    const x = 1;
     return this.http.get<{ results: Game[] }>(this.resourcePath).pipe(map(response => response.results));
-  }
-
-  public getGamesByGenre(genre: string) {
-    const genreId: number = this.genreMappings.get(genre);
-
-    return this.http
-      .get<{ results: Game[] }>(`${this.resourcePath}?genres=${genreId}`)
-      .pipe(map(response => response.results));
   }
 }

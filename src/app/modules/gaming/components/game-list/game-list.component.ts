@@ -4,6 +4,8 @@ import { Subscription, Observable } from 'rxjs';
 import { GamesService } from '@service/games/games.service.ts';
 import { switchMap } from 'rxjs/operators';
 import { Game } from '@modelGame';
+import { GenreService } from '@servicegenres/genres.service';
+import { PlatformsService } from '@serviceplatforms/platforms.service';
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
@@ -12,10 +14,15 @@ import { Game } from '@modelGame';
 export class GameListComponent implements OnInit, OnDestroy {
   private subscriptions: Array<Subscription> = new Array<Subscription>();
   public games: Game[];
+  public category: string;
+  public value: string;
+
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly gamingService: GamesService
+    private readonly gamingService: GamesService,
+    private readonly genreService: GenreService,
+    private readonly platformService: PlatformsService
   ) {}
 
   public ngOnInit() {
@@ -27,14 +34,19 @@ export class GameListComponent implements OnInit, OnDestroy {
       this.route.paramMap
         .pipe(
           switchMap((params: ParamMap) => {
+            this.games = [];
             if (this.router.url.startsWith('/gaming/genres/')) {
-              return this.gamingService.getGamesByGenre(params.get('genre'));
+              this.category = 'Genre';
+              this.value = params.get('genre');
+              return this.genreService.getGamesByGenre(params.get('genre'));
             } else if (this.router.url.startsWith('/gaming/platform/')) {
-              return this.gamingService.getGamesByPlatform(params.get('platform'));
+              this.category = 'Platform';
+              this.value = params.get('platform');
+              return this.platformService.getGamesByPlatform(params.get('platform'));
             }
           })
         )
-        .subscribe((data: Game[]) => console.log(data))
+        .subscribe((games: Game[]) => (this.games = games))
     );
   }
 

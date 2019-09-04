@@ -14,7 +14,7 @@ export interface Game {
   playtime: number;
   platform: any;
   slug: string;
-  realesed: string;
+  released: string;
   clip: any;
   parent_platforms: any;
   charts: any;
