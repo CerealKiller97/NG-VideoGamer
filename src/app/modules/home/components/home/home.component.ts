@@ -25,8 +25,9 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadingService.setLoadingText('Welcome to gaming world.');
     this.loadingService.setLoading(true);
-    setTimeout(() => this.loadingService.setLoading(false), 5000);
+    setTimeout(() => this.loadingService.setLoading(false), 2000);
     this.titleService.setTitle('VideoGamer | Home');
     this.openSnackBar();
     this.subscriptions.push(

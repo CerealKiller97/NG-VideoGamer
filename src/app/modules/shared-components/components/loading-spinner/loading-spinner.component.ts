@@ -9,6 +9,8 @@ import { LoadingService } from '@service/loading/loading.service';
 export class LoadingSpinnerComponent implements OnInit, OnDestroy {
   @Input()
   public loading: boolean;
+  @Input()
+  public text: string;
 
   constructor(private readonly loadingService: LoadingService) {}
 

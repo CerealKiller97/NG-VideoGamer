@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { Game } from '@modelGame';
 import { GenreService } from '@servicegenres/genres.service';
 import { PlatformsService } from '@serviceplatforms/platforms.service';
+import { LoadingService } from '@service/loading/loading.service';
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
@@ -22,7 +23,8 @@ export class GameListComponent implements OnInit, OnDestroy {
     private readonly route: ActivatedRoute,
     private readonly gamingService: GamesService,
     private readonly genreService: GenreService,
-    private readonly platformService: PlatformsService
+    private readonly platformService: PlatformsService,
+    private readonly loadingService: LoadingService
   ) {}
 
   public ngOnInit() {
@@ -34,6 +36,7 @@ export class GameListComponent implements OnInit, OnDestroy {
       this.route.paramMap
         .pipe(
           switchMap((params: ParamMap) => {
+            this.loadingService.setLoading(true);
             this.games = [];
             if (this.router.url.startsWith('/gaming/genres/')) {
               this.category = 'Genre';
@@ -46,7 +49,10 @@ export class GameListComponent implements OnInit, OnDestroy {
             }
           })
         )
-        .subscribe((games: Game[]) => (this.games = games))
+        .subscribe((games: Game[]) => {
+          this.games = games;
+          setTimeout(() => this.loadingService.setLoading(false), 1000);
+        })
     );
   }
 
