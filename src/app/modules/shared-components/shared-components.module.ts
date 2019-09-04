@@ -11,6 +11,7 @@ import { CustomIconService } from '@serviceicons/custom-icons.service';
 import { HeroComponent } from './components/hero/hero.component';
 import { BugReportDialogComponent } from './components/bug-report-dialog/bug-report-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarContainer, SimpleSnackBar } from '@angular/material/snack-bar';
@@ -30,9 +31,17 @@ import { MatSnackBar, MatSnackBarContainer, SimpleSnackBar } from '@angular/mate
     MaterialModule,
     FormsModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
-  exports: [HeaderComponent, FooterComponent, LoadingSpinnerComponent, FormsModule, ReactiveFormsModule],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    LoadingSpinnerComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
+  ],
   providers: [CustomIconService, MatSnackBar],
   entryComponents: [BugReportDialogComponent, MatSnackBarContainer, SimpleSnackBar]
 })

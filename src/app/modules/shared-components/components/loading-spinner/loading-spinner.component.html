@@ -1,14 +1,6 @@
-<div class="loading">
-  <div class='uil-ring-css' style='transform:scale(0.79);'>
-    <div></div>
-  </div>
-</div>
-
-<div *ngIf="loading">
-  <mat-grid-list cols="1" rowHeight="100">
-    <mat-grid-tile>
-      <app-fingerprint-spinner [animationDuration]="1000" [size]="80" [color]="'#ff1d5e'">
-      </app-fingerprint-spinner>
-    </mat-grid-tile>
-  </mat-grid-list>
+<div *ngIf="loading" id="overlay">
+  <!-- <h1 id="loading-text" class="light-text text-center mx-2 my-5"></h1> -->
+  <!-- <mat-spinner class="my-5" [value]="400" color="warn"></mat-spinner> -->
+  <app-fingerprint-spinner [animationDuration]="1000" [size]="100" [color]="'#ff1d5e'">
+  </app-fingerprint-spinner>
 </div>

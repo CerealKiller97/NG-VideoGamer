@@ -5,12 +5,17 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 })
 export class LoadingService {
   private loadingStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private text: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private subscription: Subscription;
 
   constructor() {}
 
   public setLoading(status: boolean): void {
     this.loadingStatus.next(status);
+  }
+
+  public setLoadingText(text: string): void {
+    this.text.next(text);
   }
 
   public subscribe(callbackFunc: (value: boolean) => void) {
