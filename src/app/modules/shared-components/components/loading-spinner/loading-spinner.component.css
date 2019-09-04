@@ -2,12 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100% !important;
-  width: 100% !important;
+  height: 100vh !important;
+  width: 100vw !important;
   position: absolute;
   background-color: #3f51b5 !important;
   z-index: 1 !important;
-  overflow: hidden !important;
+  overflow-x: hidden !important;
   transition: 1s ease-in-out !important;
 }
 
