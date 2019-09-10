@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -6,7 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  constructor() {}
+  public shouldBeFixed: boolean;
 
-  ngOnInit() {}
+  constructor(private readonly route: ActivatedRoute, private readonly router: Router) {}
+
+  ngOnInit() {
+    let url: string;
+    if (this.router.routerState.snapshot.url === '/gaming/contact') {
+      this.shouldBeFixed = true;
+    } else if (this.router.routerState.snapshot.url === '/contact') {
+      this.shouldBeFixed = true;
+    }
+  }
 }
