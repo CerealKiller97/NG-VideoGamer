@@ -1,0 +1,15 @@
+.img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.span-fix {
+  margin-top: -12px;
+  margin-left: 20px;
+}
+
+.clear-text {
+  text-align: justify !important;
+  word-spacing: 5px !important;
+  line-height: 2.25em !important;
+}

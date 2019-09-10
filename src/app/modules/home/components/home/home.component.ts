@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { LoadingService } from '@service/loading/loading.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { Subscription } from 'rxjs';
-import { GamesService } from '@service/games/games.service';
-import { GameComponent } from 'app/modules/gaming/components/game/game.component';
+import { Title } from '@angular/platform-browser';
 import { Game } from '@model/Game';
+import { GamesService } from '@service/games/games.service';
+import { LoadingService } from '@service/loading/loading.service';
+import { GameComponent } from 'app/modules/gaming/components/game/game.component';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
     this.subscriptions.push(
       this.gamesService.getRandomGames().subscribe((data: Game[]) => {
         this.games = data;
-        console.log(this.games);
       })
     );
   }
