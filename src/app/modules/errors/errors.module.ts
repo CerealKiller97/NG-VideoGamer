@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ErrorsComponent } from './components/errors/errors.component';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { RouterModule, Routes } from '@angular/router';
+import { ErrorsComponent } from './components/errors/errors.component';
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +14,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [ErrorsComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), MatGridListModule],
-  exports: [ErrorsComponent, RouterModule, MatGridListModule]
+  imports: [CommonModule, RouterModule.forChild(routes), MatGridListModule, MatButtonModule],
+  exports: [ErrorsComponent, RouterModule, MatGridListModule, MatButtonModule]
 })
 export class ErrorsModule {}

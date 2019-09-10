@@ -1,7 +1,13 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h1 class="light-text">Ooops look you got lost :( 404 page</h1>
+<mat-grid-list cols="1" rowHeight="500">
+  <mat-grid-tile>
+    <div class="container my-5 mx-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h1 class="light-text">Ooops looks you got lost :( 404 page</h1>
+          <button mat-raised-button (click)="goBack();">Go back</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+
+  </mat-grid-tile>
+</mat-grid-list>

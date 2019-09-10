@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./errors.component.css']
 })
 export class ErrorsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  // gaming/contact
+
+  public goBack(): void {
+    history.back();
   }
-
 }

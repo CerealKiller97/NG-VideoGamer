@@ -1,77 +1,127 @@
-  <!-- <h1 class="text-center light-text">
-    Contact
-    <span>
-      <mat-icon>mail</mat-icon>
-    </span>
-  </h1>
-
-  <form [formGroup]="contactForm">
-    <div class="row">
-      <div class="col col-lg-6 offset-col-lg-3">
-
-
-
-
-
+<!-- <div class="container my-5 mx-5">
+  <mat-toolbar>
+    <h1 class="light-text text-center">Contact</h1>
+  </mat-toolbar>
+  <div class="row">
+    <p class="light-text text-center"> Do you have any questions? Please do not hesitate to contact us directly. Our
+      team will come
+      back to you within a
+      matter of hours to help you.
+    </p>
+    <form [formGroup]="contactForm">
+      <div class="col">
+        <div class="mx-5 my-5">
+          <mat-form-field>
+            <input matInput formControlName="name" placeholder="Enter your name..." />
+            <span *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched">Name field is
+              required.</span>
+          </mat-form-field>
+        </div>
       </div>
-    </div>
+      <div class="col">
+        <div class="mx-5 my-5">
+          <mat-form-field>
+            <input matInput formControlName="email" placeholder="Enter your email..." />
+            <span *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">Email field is
+              required.</span>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="w-100"></div>
+      <div class="col">
+        <div class="mx-5 my-5">
+          <mat-form-field>
+            <input matInput formControlName="subject" placeholder="Enter your subject..." />
+            <span *ngIf="!contactForm.get('subject').valid && contactForm.get('subject').touched">Subject field is
+              required.</span>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mx-5 my-5">
+          <mat-form-field>
+            <textarea matInput formControlName="body" placeholder="Message body..."></textarea>
+            <span *ngIf="!contactForm.get('body').valid && contactForm.get('body').touched">Body field is
+              required.</span>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" type="button" (click)="onSubmitContactForm();">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+ -->
 
-    <div class="mx-5 my-5">
-      <mat-form-field>
-        <input matInput formControlName="subject" placeholder="Enter your subject..." />
-      </mat-form-field>
-    </div>
-
-
-
-
-
-  </form> -->
-
-  <div class="container">
+<section class="container my-5 mx-5">
+  <div class="row">
     <mat-toolbar>
       <h1 class="light-text text-center">Contact</h1>
     </mat-toolbar>
-    <div class="row">
+    <!--Grid column-->
+    <div class="col-lg-12">
       <form [formGroup]="contactForm">
-        <div class="col">
-          <div class="mx-5 my-5">
-            <mat-form-field>
-              <input matInput formControlName="name" placeholder="Enter your name..." />
-              <span *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched">Name field is
-                required.</span>
-            </mat-form-field>
+
+        <!--Grid row-->
+        <div class="row">
+
+          <!--Grid column-->
+          <div class="col">
+            <div class="mx-5 my-5">
+              <mat-form-field>
+                <input matInput formControlName="name" placeholder="Enter your name..." />
+                <span *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched">Name field is
+                  required.</span>
+              </mat-form-field>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-6">
+            <div class="col">
+              <div class="mx-5 my-5">
+                <mat-form-field>
+                  <input matInput formControlName="email" placeholder="Enter your email..." />
+                  <span *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">Email field is
+                    required.</span>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+        <!--Grid row-->
+        <div class="row">
+
+          <div class="col">
+            <div class="mx-5 my-5">
+              <mat-form-field>
+                <input matInput formControlName="subject" placeholder="Enter your subject..." />
+                <span *ngIf="!contactForm.get('subject').valid && contactForm.get('subject').touched">Subject field is
+                  required.</span>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+
+            <div class="col">
+              <div class="mx-5 my-5">
+                <mat-form-field>
+                  <textarea matInput formControlName="body" placeholder="Message body..."></textarea>
+                  <span *ngIf="!contactForm.get('body').valid && contactForm.get('body').touched">Body field is
+                    required.</span>
+                </mat-form-field>
+              </div>
+
+            </div>
           </div>
         </div>
-        <div class="col">
-          <div class="mx-5 my-5">
-            <mat-form-field>
-              <input matInput formControlName="email" placeholder="Enter your email..." />
-              <span *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">Email field is
-                required.</span>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="w-100"></div>
-        <div class="col">
-          <div class="mx-5 my-5">
-            <mat-form-field>
-              <input matInput formControlName="subject" placeholder="Enter your subject..." />
-              <span *ngIf="!contactForm.get('subject').valid && contactForm.get('subject').touched">Subject field is
-                required.</span>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="col">
-          <div class="mx-5 my-5">
-            <mat-form-field>
-              <textarea matInput formControlName="body" placeholder="Message body..."></textarea>
-              <span *ngIf="!contactForm.get('body').valid && contactForm.get('body').touched">Body field is
-                required.</span>
-            </mat-form-field>
-          </div>
-          <button mat-raised-button color="primary" type="button" (click)="onSubmitContactForm();">Submit</button>
-        </div>
+        <button mat-raised-button color="primary" type="button" (click)="onSubmitContactForm();">Submit</button>
       </form>
     </div>
   </div>
+</section>
