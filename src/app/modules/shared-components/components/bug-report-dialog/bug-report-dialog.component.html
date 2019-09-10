@@ -1,15 +1,20 @@
 <h1 mat-dialog-title class="text-center">Bug Report</h1>
-<div mat-dialog-content class="text-center">
+<div mat-dialog-content class="text-center my-3">
   <form class="example-form" [formGroup]="bugReportForm">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Enter your full name..." formControlName="fullName" />
-      <span *ngIf="!bugReportForm.get('fullName').valid && bugReportForm.get('fullName').touched">Full name is
-        required.</span>
+    <mat-form-field class="example-full-width my-3">
+      <input matInput placeholder="Enter your name..." formControlName="fullName" />
+      <mat-error *ngIf="!bugReportForm.get('fullName').valid && bugReportForm.get('fullName').touched">
+        Name is
+        required.
+      </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="example-full-width my-3">
       <textarea matInput placeholder="Report a bug..." formControlName="bug"></textarea>
-      <span *ngIf="!bugReportForm.get('bug').valid && bugReportForm.get('bug').touched">Bug field is required.</span>
+      <mat-error *ngIf="!bugReportForm.get('bug').valid && bugReportForm.get('bug').touched">
+        Bug is
+        required.
+      </mat-error>
     </mat-form-field>
   </form>
 

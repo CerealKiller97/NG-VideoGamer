@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { LoadingService } from '../../../shared/services/loading/loading.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contact',
@@ -53,8 +53,8 @@ export class ContactComponent implements OnInit {
 
   public onSubmitContactForm(): void {
     if (this.contactForm.invalid) {
-      console.log(this.contactForm.errors);
       console.log('errors');
+      console.log(this.contactForm.errors);
       this.openErrorSnackBar();
       // show errors
       // snack bar error

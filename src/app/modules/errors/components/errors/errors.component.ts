@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-errors',
@@ -6,13 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./errors.component.css']
 })
 export class ErrorsComponent implements OnInit {
-  constructor() {}
+  constructor(private readonly router: Router) {}
 
   ngOnInit() {}
 
-  // gaming/contact
-
   public goBack(): void {
-    history.back();
+    this.router.navigate(['']);
   }
 }
