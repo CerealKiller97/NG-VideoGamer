@@ -2,8 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorsComponent } from './components/errors/errors.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +16,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [ErrorsComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), MatGridListModule, MatButtonModule],
+  imports: [CommonModule, RouterModule.forChild(routes), MatGridListModule, MatButtonModule, MatIconModule],
   exports: [ErrorsComponent, RouterModule, MatGridListModule, MatButtonModule]
 })
 export class ErrorsModule {}

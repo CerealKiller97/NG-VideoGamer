@@ -57,66 +57,62 @@
     <mat-toolbar>
       <h1 class="light-text text-center">Contact</h1>
     </mat-toolbar>
-    <!--Grid column-->
     <div class="col-lg-12">
       <form [formGroup]="contactForm">
-
-        <!--Grid row-->
         <div class="row">
-
-          <!--Grid column-->
           <div class="col">
             <div class="mx-5 my-5">
               <mat-form-field>
                 <input matInput formControlName="name" placeholder="Enter your name..." />
-                <span *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched">Name field is
-                  required.</span>
+                <mat-error *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched">
+                  Name is required.
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
           <div class="col-md-6">
             <div class="col">
               <div class="mx-5 my-5">
                 <mat-form-field>
                   <input matInput formControlName="email" placeholder="Enter your email..." />
-                  <span *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">Email field is
-                    required.</span>
+
+                  <mat-error *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched">
+                    Email is
+                    required.
+                  </mat-error>
+
+                  <mat-error *ngIf="contactForm.get('email').valid && !contactForm.hasError('required')">
+                    Please enter a valid email address
+                  </mat-error>
                 </mat-form-field>
               </div>
             </div>
           </div>
-          <!--Grid column-->
-
         </div>
-        <!--Grid row-->
-
-        <!--Grid row-->
         <div class="row">
-
           <div class="col">
             <div class="mx-5 my-5">
               <mat-form-field>
                 <input matInput formControlName="subject" placeholder="Enter your subject..." />
-                <span *ngIf="!contactForm.get('subject').valid && contactForm.get('subject').touched">Subject field is
-                  required.</span>
+                <span *ngIf="!contactForm.get('subject').valid && contactForm.get('subject').touched"></span>
+                <mat-error *ngIf="!contactForm.get('subject').valid && contactForm.get('subject').touched">
+                  Subject is
+                  required.
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
-
           <div class="col-md-6">
-
             <div class="col">
               <div class="mx-5 my-5">
                 <mat-form-field>
                   <textarea matInput formControlName="body" placeholder="Message body..."></textarea>
-                  <span *ngIf="!contactForm.get('body').valid && contactForm.get('body').touched">Body field is
-                    required.</span>
+                  <mat-error *ngIf="!contactForm.get('body').valid && contactForm.get('body').touched">
+                    Message is
+                    required.
+                  </mat-error>
                 </mat-form-field>
               </div>
-
             </div>
           </div>
         </div>
