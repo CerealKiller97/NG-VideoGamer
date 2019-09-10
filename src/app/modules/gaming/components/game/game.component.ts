@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Game } from '@model/Game';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { LoadingSpinnerComponent } from '@shared-components/components/loading-spinner/loading-spinner.component';
+import { Game } from '@model/Game';
 import { CustomIconService } from '@service/icons/custom-icons.service';
+import { LoadingSpinnerComponent } from '@shared-components/components/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-game',
@@ -22,7 +22,7 @@ export class GameComponent implements OnInit {
   public ngOnInit(): void {
     this.customIconsService.registerPlatformIcons();
     this.mapGenres(this.game);
-    this.genereateColorForMetrics(this.game);
+    this.genereateColorForMetrics(this.game.metacritic);
     this.mapPlatforms(this.game);
   }
 
@@ -38,24 +38,24 @@ export class GameComponent implements OnInit {
   }
 
   public imageToVideoReplace(game: Game) {
-    console.log(game);
+    // TODO: console.log(game);
   }
 
   public mapGenres(game: Game): string {
     return game.genres.map(genre => genre.name).join(', ');
   }
 
-  public genereateColorForMetrics(game: Game): string {
-    if (game.metacritic !== null) {
-      if (game.metacritic >= 90) {
+  public genereateColorForMetrics(metacritic: number): string {
+    if (metacritic !== null) {
+      if (metacritic >= 90) {
         return 'warn';
       }
 
-      if (game.metacritic < 90) {
+      if (metacritic < 90) {
         return 'primary';
       }
 
-      if (game.metacritic < 80) {
+      if (metacritic < 80) {
         return 'accent';
       }
     }

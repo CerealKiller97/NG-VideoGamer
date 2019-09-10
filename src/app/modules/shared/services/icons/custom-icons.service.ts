@@ -1,6 +1,6 @@
-import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material/icon';
 import { Injectable } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export interface CustomIcon {
   name: string;
@@ -16,7 +16,8 @@ export class CustomIconService {
     { name: 'xbox', path: '../../../../../assets/images/platforms/xbox.svg' },
     { name: 'nintendo', path: '../../../../../assets/images/platforms/nintendoswitch.svg' },
     { name: 'ios', path: '../../../../../assets/images/platforms/apple.svg' },
-    { name: 'android', path: '../../../../../assets/images/platforms/android.svg' }
+    { name: 'android', path: '../../../../../assets/images/platforms/android.svg' },
+    { name: 'linux', path: '../../../../../assets/images/platforms/linux.svg' }
   ];
 
   constructor(private readonly matIconRegistry: MatIconRegistry, private readonly domSanitizer: DomSanitizer) {}

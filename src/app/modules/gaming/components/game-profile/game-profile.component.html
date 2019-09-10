@@ -1,11 +1,114 @@
-<div class="container">
-  <h1 class="light-text text-center">
-    {{ game?.name }}
-  </h1>
+<div class="container" *ngIf="game !== null">
+  <h1 class="light-text text-center my-5">{{ game.name }}</h1>
   <div class="row">
-    <mat-chip color="primary">{{ game?.released }}</mat-chip>
-    <!-- <mat-icon *ngFor="let platform of game.parent_platforms">
-      {{ platform?.platform.slug }}
-    </mat-icon> -->
+    <span>
+      <mat-chip class="p-2" color="primary">{{ game.released | date: 'mediumDate' }}</mat-chip>
+    </span>
+    <span class="example-fill-remaining-space"></span>
+    <span class="span-fix">
+      <mat-icon *ngFor="let platform of platforms" [svgIcon]="platform" class="mx-2 my-2"></mat-icon>
+    </span>
+  </div>
+  <div class="row">
+    <img mat-card-image class="img my-5" [src]="game.background_image" [alt]="game.name" />
+  </div>
+  <div class="row">
+    <h1 class="light-text">Game description</h1>
+    <p class="light-text clear-text">{{ game.description_raw }}</p>
+  </div>
+  <div class="row">
+    <mat-card-content>
+      <h1 class="light-text">Platforms</h1>
+      <mat-list>
+        <mat-list-item *ngFor="let platform of game.parent_platforms">
+          <span mat-line>
+            {{ platform.platform.name }}
+          </span>
+          <span class="ml-5">
+            <mat-icon mat-list-icon [svgIcon]="mapPlatform(platform.platform.slug)"></mat-icon>
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </div>
+
+  <div class="row">
+    <mat-card-content>
+      <h1 class="light-text">Genres</h1>
+      <mat-list>
+        <mat-list-item *ngFor="let genre of game.genres">
+          <span mat-line>
+            {{ genre.name }}
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+
+  </div>
+  <div class="row">
+    <mat-card-content>
+      <h1 class="light-text">Developers</h1>
+      <mat-list>
+        <mat-list-item *ngFor="let developer of game.developers">
+          <span mat-line>
+            {{ developer.name }}
+          </span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </div>
+  <div class="row">
+    <mat-card-content>
+      <h1 class="light-text">Metacritic </h1>
+      <mat-list>
+        <mat-list-item>
+          <mat-chip mat-line color="{{ genereateColorForMetrics(game.metacritic) }}" selected class="px-1 py-1">
+            {{ game.metacritic === null ? 'No score' : game.metacritic }}
+          </mat-chip>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </div>
+  <div class="row">
+    <mat-card-content>
+      <h1 class="light-text">Publishers</h1>
+      <mat-list>
+        <mat-list-item *ngFor="let publisher of game.publishers">
+          <span mat-line>{{ publisher.name }}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </div>
+  <div class="row">
+    <mat-card-content>
+      <h1 class="light-text">Realease date</h1>
+      <mat-list>
+        <mat-list-item>
+          <mat-chip class="p-2">{{ game.released | date: 'mediumDate' }}</mat-chip>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </div>
+  <div class="row">
+    <mat-card-content>
+      <h1 mat-subheader class="light-text">Tags</h1>
+      <mat-list>
+        <mat-list-item *ngFor="let tag of game.tags">
+          <mat-chip class="p-2">
+            {{ tag.name }}
+          </mat-chip>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </div>
+  <div class="row">
+    <mat-card-content>
+      <h1 mat-subheader class="light-text">Website</h1>
+      <mat-list>
+        <mat-list-item>
+          <a mat-raised-button color="primary" href="{{ game.website }}">{{ game.name }} website</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
   </div>
 </div>
